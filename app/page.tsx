@@ -26,16 +26,16 @@ export default function Home() {
           <h1 className="t-d1">About me</h1>
           <p className="max-w-800">
             Hi, I’m Joris, a Senior Developer and Creative Technologist based in
-            New Plymouth, Aotearoa. I am a results driven frontend engineer who
-            enjoys the mix of creativity and clear process. My work sits
-            somewhere between UX, design, and engineering. I enjoy collaborating
-            across disciplines, understanding the people behind a brief, and
-            building interactive experiences that feel delightful and
+            New Plymouth, Aotearoa New Zealand. I am a results driven frontend
+            engineer who enjoys the mix of creativity and clear process. My work
+            sits somewhere between UX, design, and engineering. I enjoy
+            collaborating across disciplines, understanding the people behind a
+            brief, and building interactive experiences that feel delightful and
             purposeful. I have been doing this for more than 20 years across
             brand sites, interactive installations, and product driven web
             applications.
           </p>
-          <p className="mt-8">
+          <p className="mt-8 max-w-800">
             I am currently moving pixels at Gladeye, where I work across
             National Geographic projects, accessible museum experiences,
             internal tooling, and cross team collaboration.
