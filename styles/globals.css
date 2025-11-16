@@ -1,0 +1,43 @@
+@import "tailwindcss";
+@import "./typography.css";
+@import "./grid.css";
+@plugin "@gladeye/tailwind-fluid-plugin";
+
+@theme {
+  --font-sohne: var(--font-sohne);
+
+  /* defaults for the scaling plugin */
+  /* 1px = 0.0625rem */
+  --spacing: 0.0625rem;
+  /* the Figma design for the smallest screen size */
+  --breakpoint-design-min: 320px;
+  /* the Figma design for the largest screen size */
+  --breakpoint-design-max: 1200px;
+  /* the Figma design for the smallest container size */
+  --breakpoint-c-min: 2rem;
+  /* the Figma design for the largest container size */
+  --breakpoint-c-max: 10rem;
+
+  /* Define the breakpoints for your fluid variable */
+  --fluid-site-gutter-breakpoint-design-min: 320px;
+  --fluid-site-gutter-breakpoint-design-max: 1320px;
+  /* Define the values for your fluid variable */
+  --fluid-site-gutter-value-min: 16px;
+  --fluid-site-gutter-value-max: 24px;
+
+  /* Define the breakpoints for your fluid variable */
+  --fluid-site-margin-size-breakpoint-design-min: 320px;
+  --fluid-site-margin-size-breakpoint-design-max: 1320px;
+  /* Define the values for your fluid variable */
+  --fluid-site-margin-size-value-min: 48px;
+  --fluid-site-margin-size-value-max: 48px;
+
+  /* Adding them to the "spacing" namespace makes "sgs" available for utility classes, e.g "ml-sgs */
+  --spacing-sgs: var(--fluid-site-gutter);
+  --spacing-sms: var(--fluid-site-margin-size);
+}
+
+body {
+  background: black;
+  color: white;
+}

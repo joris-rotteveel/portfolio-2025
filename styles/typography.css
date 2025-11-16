@@ -1,0 +1,46 @@
+/* NOTE: using it as @utility classes is beneficial:
+
+- Composability (combine with other classes)
+- Reusability (can be used as a base for other classes, @apply t-h2;  for example)
+*/
+
+@utility t-d1 {
+  @apply font-sohne;
+  @apply text-fluid-[48px,90px];
+  @apply uppercase;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1;
+}
+
+@utility t-d2 {
+  @apply t-d1;
+  @apply text-fluid-[32px,50px];
+}
+
+@utility t-h1 {
+  @apply font-sohne;
+  @apply text-fluid-[32px,40px];
+}
+
+@utility t-h2 {
+  @apply t-h1;
+  @apply text-fluid-[24px,32px];
+}
+@utility t-h3 {
+  @apply t-h1;
+  @apply text-fluid-[12px,12px];
+}
+
+@utility t-bc {
+  @apply text-fluid-[16px,18px];
+  @apply font-sohne;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1;
+}
+
+@utility t-bc-small {
+  @apply t-bc;
+  @apply text-fluid-[12px,12px];
+}

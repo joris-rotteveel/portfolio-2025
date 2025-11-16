@@ -1,65 +1,99 @@
-import Image from "next/image";
+import { brandsOrdered } from "@/data/brands";
+import { experienceSorted } from "@/data/experience";
+import { projects } from "@/data/portfolio-data";
+import PortfolioItem from "@/components/PortfolioItem";
 
 export default function Home() {
+  // Group experience by year (use 'to' year for completed, 'from' year for ongoing)
+  const experienceByYear = experienceSorted.reduce((acc, exp) => {
+    const year = exp.to ?? exp.from;
+    if (!acc[year]) {
+      acc[year] = [];
+    }
+    acc[year].push(exp);
+    return acc;
+  }, {} as Record<number, typeof experienceSorted>);
+
+  // Get years sorted descending
+  const years = Object.keys(experienceByYear)
+    .map(Number)
+    .sort((a, b) => b - a);
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <div className="t-bc">
+      <main className="ui-grid gap-y-24">
+        <div className="col-span-full grid gap-8 mb-32">
+          <h1 className="t-d1">About me</h1>
+          <p className="max-w-800">
+            Hi, I’m Joris, a Senior Developer and Creative Technologist based in
+            New Plymouth, Aotearoa. I am a results driven frontend engineer who
+            enjoys the mix of creativity and clear process. My work sits
+            somewhere between UX, design, and engineering. I enjoy collaborating
+            across disciplines, understanding the people behind a brief, and
+            building interactive experiences that feel delightful and
+            purposeful. I have been doing this for more than 20 years across
+            brand sites, interactive installations, and product driven web
+            applications.
+          </p>
+          <p className="mt-8">
+            I am currently moving pixels at Gladeye, where I work across
+            National Geographic projects, accessible museum experiences,
+            internal tooling, and cross team collaboration.
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+        <div className="col-span-full grid gap-8 mb-32">
+          <h2 className="t-d2 mb-24">Skills</h2>
+          <p>
+            HTML / CSS / JavaScript / TypeScript / React / WebGL / Interactive
+            installations
+          </p>
+        </div>
+
+        <div className="col-span-full grid gap-8 mb-32">
+          <h2 className="t-d2 max-w-700">
+            Some of the brands I have worked for
+          </h2>
+          <ul className="grid gap-8 mt-24">
+            {brandsOrdered.map((brand) => {
+              return <li key={brand}>{brand}</li>;
+            })}
+          </ul>
+        </div>
+        <div className="col-span-full grid gap-8 mb-32">
+          <h2 className="t-d2 mb-24">Experience</h2>
+          {years.map((year) => (
+            <div key={year}>
+              {/* <h3 className="t-h2 mb-4">{year}</h3> */}
+              <ul className="grid gap-8">
+                {experienceByYear[year].map((experience) => {
+                  const yearRange = experience.to
+                    ? `${experience.from} – ${experience.to}`
+                    : `${experience.from} – now`;
+                  return (
+                    <li key={experience.title}>
+                      <span className="t-h2">{experience.title}</span>
+                      <span className="t-bc-small block"> ({yearRange}) </span>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          ))}
+        </div>
+
+        <div className="col-span-full grid gap-8 mb-32">
+          <h2 className="t-d2 ">Work</h2>
+          <p>These are some of the projects I&rsquo;ve been involved in:</p>
+          <div className="mt-24">
+            {projects.map((project) => {
+              return <PortfolioItem {...project} key={project.title} />;
+            })}
+          </div>
         </div>
       </main>
+      <footer className="ui-grid">
+        <p className="col-span-full text-right">Thanks for dropping by!</p>
+      </footer>
     </div>
   );
 }

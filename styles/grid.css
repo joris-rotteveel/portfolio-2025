@@ -1,0 +1,7 @@
+@layer components {
+  .ui-grid {
+    @apply px-sms py-sms grid gap-x-12;
+    @apply grid-cols-8;
+    @apply mx-auto max-w-[1280px];
+  }
+}
