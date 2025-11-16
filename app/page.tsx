@@ -72,7 +72,11 @@ export default function Home() {
                   return (
                     <li key={experience.title}>
                       <span className="t-h2">{experience.title}</span>
-                      <span className="t-bc-small block"> ({yearRange}) </span>
+                      <span className="t-bc-small block">
+                        {" "}
+                        {experience.role}{" "}
+                      </span>
+                      <span className="t-bc-small "> ({yearRange}) </span>
                     </li>
                   );
                 })}

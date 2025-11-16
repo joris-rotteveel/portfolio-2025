@@ -1,18 +1,21 @@
 export const experience = [
   {
     title: "Random Studio",
+    role: "Flash Developer",
     from: 2005,
     to: 2010,
     href: "http://random.studio",
   },
   {
     title: "Resn",
+    role: "Senior Developer and Tech Lead",
     from: 2010,
     to: 2015,
     href: "http://resn.co.nz",
   },
   {
     title: "Collaborations with Grafik",
+    role: "Freelance Senior Developer",
     from: 2020,
     to: 2022,
     href: "http://grafik.co.nz",
@@ -20,13 +23,15 @@ export const experience = [
 
   {
     title: "Touchtech / Springload",
+    role: "Senior Developer and Tech Lead",
     from: 2015,
     to: 2021,
     href: "http://springload.co.nz",
   },
 
   {
-    title: " Collaborations with Sons & Co",
+    title: "Collaborations with Sons & Co",
+    role: "Freelance Senior Developer",
     from: 2021,
     to: 2022,
     href: "http://sons.co.nz",
@@ -34,12 +39,14 @@ export const experience = [
 
   {
     title: "Altered State Machine",
+    role: "Senior Developer and Tech Lead",
     from: 2022,
     to: 2023,
     href: "https://www.alteredstatemachine.xyz",
   },
   {
     title: "Gladeye",
+    role: "Senior Developer",
     from: 2023,
     to: null,
     href: "https://www.gladeye.com",
